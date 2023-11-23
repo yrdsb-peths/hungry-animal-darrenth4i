@@ -12,11 +12,12 @@ public class Elephant extends Actor
     GreenfootSound elephantSound = new GreenfootSound("elephantcub.mp3");
     GreenfootImage[] idle = new GreenfootImage[8];
     
+    String facing = "right";
+    
     //Elephant constructor
     public Elephant(){
         for(int i = 0; i < idle.length; i++){
             idle[i] = new GreenfootImage("images/elephant_idle/idle" + i  + ".png");
-            idle[i].scale(100, 100);
         }
         setImage(idle[0]);
     }
