@@ -40,14 +40,16 @@ public class TitleScreen extends World
     {
         Elephant elephant = new Elephant();
         addObject(elephant,508,76);
-        elephant.setLocation(490,90);
-        elephant.setLocation(488,86);
-        elephant.setLocation(484,76);
         Elephant elephant2 = new Elephant();
         addObject(elephant2,579,91);
-        elephant2.setLocation(92,168);
-        elephant.setLocation(564,82);
         elephant2.setLocation(65,69);
         elephant.setLocation(528,67);
+        Label label = new Label("Press 'a' and 'd' to move!", 50);
+        addObject(label,286,220);
+        Label label2 = new Label("Press spacebar to start the game!", 30);
+        addObject(label2,286,354);
+        label.setLocation(300,330);
+        label2.setLocation(300,376);
+        
     }
 }
