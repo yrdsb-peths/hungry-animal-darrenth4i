@@ -1,13 +1,16 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Elephant here.
+ * The elephant is hungry and needs to keep eating apples
+ * or else he will die.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Darren
+ * @version November 2023
  */
 public class Elephant extends Actor
 {
+    GreenfootSound elephantSound = new GreenfootSound("elephantcub.mp3");
+    
     /**
      * Act - do whatever the Elephant wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
@@ -37,6 +40,8 @@ public class Elephant extends Actor
             world.createApple();
             //Add 1 to score
             world.increaseScore();
+            //play elephant cub sound when apple is eaten
+            elephantSound.play();
         }
     }
 }
