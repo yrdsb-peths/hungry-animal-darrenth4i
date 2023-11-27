@@ -15,7 +15,9 @@ public class MyWorld extends World
      */
     
     public int score = 0; //Score variable
+    public int highScore = 0; //High score variable
     Label scoreLabel; //Score label object
+    Label highScoreLabel; //High score label object
     int level = 1; //Speed at which apple is falling
     
     public MyWorld()
@@ -30,6 +32,10 @@ public class MyWorld extends World
         //Label to show the score
         scoreLabel = new Label(0, 80);
         addObject(scoreLabel, 20, 30);
+        
+        //Label to show the high score of the session
+        highScoreLabel = new Label("High score: " + 0, 40);
+        addObject(highScoreLabel, 500, 20);
         
         //Create falling apple
         createApple();
@@ -51,6 +57,9 @@ public class MyWorld extends World
     public void gameOver(){
         Label gameOverLabel = new Label("Game Over", 100);
         addObject(gameOverLabel, 300, 200);
+        if(score > highScore){
+            highScoreLabel.setValue("High score: " + score);
+        }
     }    
     
     //Create an apple in a random x-value at the top
