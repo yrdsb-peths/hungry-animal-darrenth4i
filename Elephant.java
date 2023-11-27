@@ -74,11 +74,11 @@ public class Elephant extends Actor
         //If the elephant goes past the world boundaries it will be
         //teleported to the other side of the world 
         //e.g. Hold right and it will eventually teleport elephant to left side 
-        if(getX() < -50){
+        if(getX() < -50){ //-50 instead of 0 because 0,0 of elephant is at the left
             setLocation(600, getY());
         }
-        else if(getX() >= 600){
-            setLocation(-50, getY());
+        else if(getX() > 600){
+            setLocation(-25, getY());
         }
         
         //Apple disappears once elephant touches it
