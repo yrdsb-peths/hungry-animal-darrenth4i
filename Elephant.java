@@ -10,6 +10,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class Elephant extends Actor
 {
     GreenfootSound elephantSound = new GreenfootSound("elephantcub.mp3");
+    //Array to "animate" elephant's idle animation
     GreenfootImage[] idleRight = new GreenfootImage[8];
     GreenfootImage[] idleLeft = new GreenfootImage[8];
     
@@ -19,10 +20,12 @@ public class Elephant extends Actor
     
     //Elephant constructor
     public Elephant(){
+        //Construct an array of 8 pictures of elephant
         for(int i = 0; i < idleRight.length; i++){
             idleRight[i] = new GreenfootImage("images/elephant_idle/idle" + i  + ".png");
         }
         
+        //Same as above but for when elephant faces left
         for(int i = 0; i < idleLeft.length; i++){
             idleLeft[i] = new GreenfootImage("images/elephant_idle/idle" + i  + ".png");
             idleLeft[i].mirrorHorizontally();
@@ -58,7 +61,6 @@ public class Elephant extends Actor
      */
     public void act() 
     {
-        // Add your action code here.
         //Move left or right based on key a or d
         if(Greenfoot.isKeyDown("a")){
             move(-2);
