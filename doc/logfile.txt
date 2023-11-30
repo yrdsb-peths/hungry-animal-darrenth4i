@@ -1,15 +1,8 @@
-Class documentation
+Project documentation
 <---- javadoc command: ---->
 C:\Program Files\Greenfoot\jdk\bin\javadoc.exe
--author
--version
--nodeprecated
--protected
--Xdoclint:none
--noindex
--notree
--nohelp
--nonavbar
+-sourcepath
+H:\Documents\GitHub\hungry-animal-darrenth4i
 -source
 11
 -classpath
@@ -20,20 +13,54 @@ H:\Documents\GitHub\hungry-animal-darrenth4i\doc
 windows-1252
 -charset
 windows-1252
-H:\Documents\GitHub\hungry-animal-darrenth4i\Elephant.java
+-doctitle
+hungry-animal-darrenth4i
+-windowtitle
+hungry-animal-darrenth4i
+-author
+-version
+-nodeprecated
+-protected
+-Xdoclint:none
+-link
+https://docs.oracle.com/en/java/javase/11/docs/api/
+H:\Documents\GitHub\hungry-animal-darrenth4i/Apple.java
+H:\Documents\GitHub\hungry-animal-darrenth4i/SimpleTimer.java
+H:\Documents\GitHub\hungry-animal-darrenth4i/Elephant.java
+H:\Documents\GitHub\hungry-animal-darrenth4i/Label.java
+H:\Documents\GitHub\hungry-animal-darrenth4i/MyWorld.java
+H:\Documents\GitHub\hungry-animal-darrenth4i/TitleScreen.java
 <---- end of javadoc command ---->
+Loading source file H:\Documents\GitHub\hungry-animal-darrenth4i\Apple.java...
+Loading source file H:\Documents\GitHub\hungry-animal-darrenth4i\SimpleTimer.java...
 Loading source file H:\Documents\GitHub\hungry-animal-darrenth4i\Elephant.java...
+Loading source file H:\Documents\GitHub\hungry-animal-darrenth4i\Label.java...
+Loading source file H:\Documents\GitHub\hungry-animal-darrenth4i\MyWorld.java...
+Loading source file H:\Documents\GitHub\hungry-animal-darrenth4i\TitleScreen.java...
 Constructing Javadoc information...
-H:\Documents\GitHub\hungry-animal-darrenth4i\Elephant.java:19: error: cannot find symbol
-    SimpleTimer animationTimer = new SimpleTimer();
-    ^
-  symbol:   class SimpleTimer
-  location: class Elephant
-H:\Documents\GitHub\hungry-animal-darrenth4i\Elephant.java:2: error: package SimpleTimer does not exist
-import SimpleTimer.*;
-^
 warning: unknown enum constant Tag.Any
   reason: class file for threadchecker.Tag not found
 warning: unknown enum constant Tag.Any
-2 errors
-2 warnings
+warning: unknown enum constant Tag.Any
+warning: unknown enum constant Tag.Any
+Standard Doclet version 11.0.14.1
+Building tree for all the packages and classes...
+Generating H:\Documents\GitHub\hungry-animal-darrenth4i\doc\Apple.html...
+Generating H:\Documents\GitHub\hungry-animal-darrenth4i\doc\Elephant.html...
+Generating H:\Documents\GitHub\hungry-animal-darrenth4i\doc\Label.html...
+Generating H:\Documents\GitHub\hungry-animal-darrenth4i\doc\MyWorld.html...
+Generating H:\Documents\GitHub\hungry-animal-darrenth4i\doc\SimpleTimer.html...
+H:\Documents\GitHub\hungry-animal-darrenth4i\SimpleTimer.java:24: warning - invalid usage of tag >
+H:\Documents\GitHub\hungry-animal-darrenth4i\SimpleTimer.java:24: warning - invalid usage of tag &
+H:\Documents\GitHub\hungry-animal-darrenth4i\SimpleTimer.java:24: warning - invalid usage of tag &
+Generating H:\Documents\GitHub\hungry-animal-darrenth4i\doc\TitleScreen.html...
+Generating H:\Documents\GitHub\hungry-animal-darrenth4i\doc\package-summary.html...
+Generating H:\Documents\GitHub\hungry-animal-darrenth4i\doc\package-tree.html...
+Generating H:\Documents\GitHub\hungry-animal-darrenth4i\doc\constant-values.html...
+Building index for all the packages and classes...
+Generating H:\Documents\GitHub\hungry-animal-darrenth4i\doc\overview-tree.html...
+Generating H:\Documents\GitHub\hungry-animal-darrenth4i\doc\index-all.html...
+javadoc: error - Error writing file: H:\Documents\GitHub\hungry-animal-darrenth4i\doc\package-search-index.js
+	(java.nio.file.AccessDeniedException: H:\Documents\GitHub\hungry-animal-darrenth4i\doc\package-search-index.js)
+1 error
+7 warnings
