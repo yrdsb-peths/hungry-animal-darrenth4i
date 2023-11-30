@@ -18,7 +18,9 @@ public class Elephant extends Actor
     String facing = "right";
     SimpleTimer animationTimer = new SimpleTimer();
     
-    //Elephant constructor
+    /**
+     * Elephant constructor
+     */
     public Elephant(){
         //Construct an array of 8 pictures of elephant
         for(int i = 0; i < idleRight.length; i++){
@@ -37,7 +39,9 @@ public class Elephant extends Actor
         setImage(idleRight[0]);
     }
     
-    //Method to animate the elephant
+    /**
+     * Method to animate the elephant using arrays
+     */
     int imageIndex = 0;
     public void animateElephant(){
         if(animationTimer.millisElapsed() < 50){
@@ -88,7 +92,9 @@ public class Elephant extends Actor
         animateElephant();
     }    
     
-    //Method that occurs when elephant touches an apple
+    /**
+     * Method that occurs when elephant touches an apple
+     */
     public void eat(){
         
         if(isTouching(Apple.class)){
