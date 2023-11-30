@@ -59,6 +59,8 @@ public class Elephant extends Actor
         }
     }
     
+    int cycles;
+    boolean letGo;
     /**
      * Act - do whatever the Elephant wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
@@ -73,6 +75,20 @@ public class Elephant extends Actor
         if(Greenfoot.isKeyDown("d")){
             move(2);
             facing = "right";
+        }
+        if(Greenfoot.isKeyDown("w") && cycles < 50 && !letGo){
+            setLocation(getX(), getY() - 5);
+            cycles += 5;
+            if(cycles >= 50){
+                letGo = true;
+            }
+        }
+        if(getY() < 300 && cycles != 0 && (letGo || !Greenfoot.isKeyDown("w"))){
+            setLocation(getX(), getY() + 5);
+            cycles -= 5;
+            if(cycles <= 0){
+                letGo = false;
+            }
         }
         
         //If the elephant goes past the world boundaries it will be
