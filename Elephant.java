@@ -18,6 +18,9 @@ public class Elephant extends Actor
     String facing = "right";
     SimpleTimer animationTimer = new SimpleTimer();
     
+    //Cooldown timer for jumping so elephant can't spam jump
+    SimpleTimer jumpTimer = new SimpleTimer(); //TODO DOESNT WORK
+    
     /**
      * Elephant constructor
      */
@@ -59,6 +62,7 @@ public class Elephant extends Actor
         }
     }
     
+    //TODO COMMENT
     int cycles;
     boolean letGo;
     /**
@@ -76,6 +80,8 @@ public class Elephant extends Actor
             move(2);
             facing = "right";
         }
+        
+        //TODO COMMENT
         if(Greenfoot.isKeyDown("w") && cycles < 50 && !letGo){
             setLocation(getX(), getY() - 5);
             cycles += 5;
@@ -83,6 +89,8 @@ public class Elephant extends Actor
                 letGo = true;
             }
         }
+        
+        //TODO COMMENT
         if(getY() < 300 && cycles != 0 && (letGo || !Greenfoot.isKeyDown("w"))){
             setLocation(getX(), getY() + 5);
             cycles -= 5;
@@ -90,7 +98,7 @@ public class Elephant extends Actor
                 letGo = false;
             }
         }
-        
+
         //If the elephant goes past the world boundaries it will be
         //teleported to the other side of the world 
         //e.g. Hold right and it will eventually teleport elephant to left side 
