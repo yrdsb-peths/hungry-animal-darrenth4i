@@ -11,7 +11,6 @@ public class TitleScreen extends World
     Label titleLabel = new Label("Hungry Elephant", 60);
     /**
      * Constructor for objects of class TitleScreen.
-     * 
      */
     public TitleScreen()
     {    
@@ -22,8 +21,9 @@ public class TitleScreen extends World
         prepare();
     }
 
-    //Main world's act loop
-
+    /**
+     * Main world's act loop
+     */
     public void act(){
         //Start game once player presses space bar
         if(Greenfoot.isKeyDown("space")){

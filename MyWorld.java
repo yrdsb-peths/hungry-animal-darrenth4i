@@ -1,25 +1,22 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class MyWorld here.
+ * Main world where the game is being played
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Darren
+ * @version 11/30/2023
  */
 public class MyWorld extends World
-{
-
-    /**
-     * Constructor for objects of class MyWorld.
-     * 
-     */
-    
+{ 
     public int score = 0; //Score variable
     public int highScore = 0; //High score variable
     Label scoreLabel; //Score label object
     Label highScoreLabel; //High score label object
     int level = 1; //Speed at which apple is falling
     
+    /**
+     * Constructor for objects of class MyWorld.
+     */
     public MyWorld()
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
@@ -41,7 +38,9 @@ public class MyWorld extends World
         createApple();
     }
     
-    //Method to increase the score by 1
+    /**
+     * Method to increase the score by 1
+     */
     public void increaseScore(){
         score++;
         scoreLabel.setValue(score);
@@ -53,16 +52,21 @@ public class MyWorld extends World
         }
     }
     
-    //End the game when the apple falls too far down
+    /**
+     * Method to end the game when the apple falls too far down
+     */
     public void gameOver(){
         Label gameOverLabel = new Label("Game Over", 100);
         addObject(gameOverLabel, 300, 200);
+        //Set highscore if current score is larger than old highscore
         if(score > highScore){
             highScoreLabel.setValue("High score: " + score);
         }
     }    
     
-    //Create an apple in a random x-value at the top
+    /**
+     * Create an apple in a random x-value at the top
+     */
     public void createApple(){
         Apple apple = new Apple();
         //Update apple falling speed
