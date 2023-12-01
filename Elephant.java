@@ -81,28 +81,8 @@ public class Elephant extends Actor
             facing = "right";
         }
         
-        //TODO COMMENT
-        if(Greenfoot.isKeyDown("w") && cycles < 80 && !letGo){
-            setLocation(getX(), getY() - 5);
-            cycles += 5;
-            if(cycles >= 80){
-                letGo = true;
-            }
-        }
-        
-        if(!Greenfoot.isKeyDown("w") && cycles > 0){
-            letGo = true;
-        }
-        
-        System.out.println(letGo);
-        //TODO COMMENT
-        if(getY() < 300 && cycles != 0 && (letGo || !Greenfoot.isKeyDown("w"))){
-            setLocation(getX(), getY() + 5);
-            cycles -= 5;
-            if(cycles <= 0){
-                letGo = false;
-            }
-        }
+        //Elephant jumping method
+        jump();
 
         //If the elephant goes past the world boundaries it will be
         //teleported to the other side of the world 
@@ -135,6 +115,37 @@ public class Elephant extends Actor
             world.increaseScore();
             //play elephant cub sound when apple is eaten
             elephantSound.play();
+        }
+    }
+    
+    /**
+     * Method that allows the elephant to jump
+     */
+    public void jump(){
+        //Lets user jump 
+        if(Greenfoot.isKeyDown("w") && !letGo){
+            setLocation(getX(), getY() - 5);
+            cycles += 5;
+            //Condition is checking if user has hit the max jump height
+            if(cycles >= 80){ 
+                letGo = true;
+            }
+
+        }
+        
+        //Condition checks if user is has let go of jump midair
+        if(!Greenfoot.isKeyDown("w") && cycles > 0){
+            letGo = true;
+        }
+        
+        //Condition to make player fall back down to original height
+        if(getY() < 300 && cycles != 0 && (letGo || !Greenfoot.isKeyDown("w"))){
+            setLocation(getX(), getY() + 5);
+            cycles -= 5;
+            //User can jump again if they are back to original y-value
+            if(cycles <= 0){
+                letGo = false;
+            }
         }
     }
 }
