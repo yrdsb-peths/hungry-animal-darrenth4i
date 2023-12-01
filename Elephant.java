@@ -21,6 +21,10 @@ public class Elephant extends Actor
     //Cooldown timer for jumping so elephant can't spam jump
     SimpleTimer jumpTimer = new SimpleTimer(); //TODO DOESNT WORK
     
+    int cycles; //Variable to keep track of how far away vertically from (x, 300) the elephant is
+    boolean letGo; //Variable to track when player lets go of "w"/jump
+    boolean jumpCD; //Variable that allows player to jump after a set cooldown is over
+    
     /**
      * Elephant constructor
      */
@@ -62,9 +66,6 @@ public class Elephant extends Actor
         }
     }
     
-    //TODO COMMENT
-    int cycles;
-    boolean letGo;
     /**
      * Act - do whatever the Elephant wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
@@ -119,11 +120,11 @@ public class Elephant extends Actor
     }
     
     /**
-     * Method that allows the elephant to jump
+     * Method that allows the elephant to single jump
      */
     public void jump(){
         //Lets user jump 
-        if(Greenfoot.isKeyDown("w") && !letGo){
+        if(Greenfoot.isKeyDown("w") && !letGo && !jumpCD){
             setLocation(getX(), getY() - 5);
             cycles += 5;
             //Condition is checking if user has hit the max jump height
@@ -145,7 +146,14 @@ public class Elephant extends Actor
             //User can jump again if they are back to original y-value
             if(cycles <= 0){
                 letGo = false;
+                jumpCD = true; //begin jump cooldown
+                jumpTimer.mark();
             }
+        }
+        
+        //Allow user to jump again after a cooldown of 200 ms
+        if(jumpTimer.millisElapsed() > 200){
+            jumpCD = false;
         }
     }
 }
