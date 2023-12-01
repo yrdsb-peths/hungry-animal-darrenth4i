@@ -82,14 +82,19 @@ public class Elephant extends Actor
         }
         
         //TODO COMMENT
-        if(Greenfoot.isKeyDown("w") && cycles < 50 && !letGo){
+        if(Greenfoot.isKeyDown("w") && cycles < 80 && !letGo){
             setLocation(getX(), getY() - 5);
             cycles += 5;
-            if(cycles >= 50){
+            if(cycles >= 80){
                 letGo = true;
             }
         }
         
+        if(!Greenfoot.isKeyDown("w") && cycles > 0){
+            letGo = true;
+        }
+        
+        System.out.println(letGo);
         //TODO COMMENT
         if(getY() < 300 && cycles != 0 && (letGo || !Greenfoot.isKeyDown("w"))){
             setLocation(getX(), getY() + 5);
