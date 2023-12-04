@@ -2,7 +2,7 @@
 class.Apple.image=apple.png
 class.Elephant.image=elephant_idle.png
 class.MyWorld.image=background.jpg
-class.Spike.image=spike_idle.png
+class.Spike.image=spike3.png
 dependency1.from=MyWorld
 dependency1.to=Label
 dependency1.type=UsesDependency

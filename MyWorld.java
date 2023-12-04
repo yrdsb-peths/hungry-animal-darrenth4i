@@ -76,4 +76,15 @@ public class MyWorld extends World
         int y = 0;
         addObject(apple, x, y);
     }
+    
+    /**
+     * Create a spike in a random y-value on the ground
+     */
+    public void createSpike(){
+        Spike spike = new Spike();
+        
+        int x = Greenfoot.getRandomNumber(600);
+        int y = 300; //Elephant ground y-value
+        addObject(spike, x, y);
+    }
 }
