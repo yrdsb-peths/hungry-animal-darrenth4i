@@ -98,6 +98,9 @@ public class Elephant extends Actor
         //Apple disappears once elephant touches it
         eat();
         
+        //Game over if elephant touches spike
+        hitSpike();
+        
         //Animate the elephant
         animateElephant();
     }    
@@ -116,6 +119,17 @@ public class Elephant extends Actor
             world.increaseScore();
             //play elephant cub sound when apple is eaten
             elephantSound.play();
+        }
+    }
+    
+    /**
+     * Method that occurs when elephant touches a spike
+     */
+    public void hitSpike(){
+        if(isTouching(Spike.class)){
+            removeTouching(Spike.class);
+            MyWorld world = (MyWorld) getWorld();
+            world.gameOver();
         }
     }
     

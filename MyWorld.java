@@ -36,6 +36,9 @@ public class MyWorld extends World
         
         //Create falling apple
         createApple();
+        
+        //Create spike
+        createSpike();
     }
     
     /**
@@ -84,7 +87,7 @@ public class MyWorld extends World
         Spike spike = new Spike();
         
         int x = Greenfoot.getRandomNumber(600);
-        int y = 300; //Elephant ground y-value
+        int y = 250; //Elephant ground y-value
         addObject(spike, x, y);
     }
 }
