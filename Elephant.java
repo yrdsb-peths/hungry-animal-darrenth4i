@@ -74,11 +74,11 @@ public class Elephant extends Actor
     {
         //Move left or right based on key a or d
         if(Greenfoot.isKeyDown("a")){
-            move(-2);
+            move(-5);
             facing = "left";
         }
         if(Greenfoot.isKeyDown("d")){
-            move(2);
+            move(5);
             facing = "right";
         }
         
@@ -126,9 +126,10 @@ public class Elephant extends Actor
      * Method that occurs when elephant touches a spike
      */
     public void hitSpike(){
-        if(isTouching(Spike.class)){
+        if(isTouching(Spike.class)){ //use getOneIntersectingObject
             removeTouching(Spike.class);
             MyWorld world = (MyWorld) getWorld();
+            //Run gameover if elephant touches spike
             world.gameOver();
         }
     }
@@ -139,10 +140,10 @@ public class Elephant extends Actor
     public void jump(){
         //Lets user jump 
         if(Greenfoot.isKeyDown("w") && !letGo && !jumpCD){
-            setLocation(getX(), getY() - 5);
-            cycles += 5;
+            setLocation(getX(), getY() - 10);
+            cycles += 10;
             //Condition is checking if user has hit the max jump height
-            if(cycles >= 80){ 
+            if(cycles >= 120){ 
                 letGo = true;
             }
 

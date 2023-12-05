@@ -16,6 +16,7 @@ public class Spike extends Actor
         //Construct an array of 4 images of spike
         for(int i = 0; i < idle.length; i++){
             idle[i] = new GreenfootImage("images/spike_idle/spike" + i  + ".png");
+            idle[i].scale(idle[i].getWidth() / 2, idle[i].getHeight() / 2);
         }
         
         //initial spike image
