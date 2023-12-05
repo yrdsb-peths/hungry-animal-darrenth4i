@@ -33,6 +33,7 @@ public class Spike extends Actor
             
             if(imageIndex == 3){
                 world.removeObject(this);
+                world.createSpike();
             }
             setImage(idle[imageIndex]);
             imageIndex = (imageIndex + 1);
