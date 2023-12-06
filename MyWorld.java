@@ -42,6 +42,13 @@ public class MyWorld extends World
         createSpike();
     }
     
+    public void act(){
+        if(Greenfoot.isKeyDown("r")){
+            TitleScreen title = new TitleScreen();
+            Greenfoot.setWorld(title);
+        }
+    }
+    
     /**
      * Method to increase the score by 1
      */
@@ -61,7 +68,7 @@ public class MyWorld extends World
      * Method to end the game when the apple falls too far down
      */
     public void gameOver(){
-        Label gameOverLabel = new Label("Game Over", 100);
+        Label gameOverLabel = new Label("Game Over (R to reset)", 60);
         addObject(gameOverLabel, 300, 200);
         //Remove all instances of Apple
         removeObjects(getObjects(Apple.class)); 
