@@ -11,6 +11,8 @@ public class Spike extends Actor
     //Array to "animate" spike's animation 
     GreenfootImage[] idle = new GreenfootImage[4];
     SimpleTimer animationTimer = new SimpleTimer();
+    
+    int[] duration = {500, 500, 500, 3000};
  
     public Spike(){
         //Construct an array of 4 images of spike
@@ -28,16 +30,17 @@ public class Spike extends Actor
      */
     int imageIndex = 0;
     public void animateSpike(){
-        if(animationTimer.millisElapsed() > 500){
+        if(animationTimer.millisElapsed() > duration[imageIndex]){
             animationTimer.mark();
             MyWorld world = (MyWorld) getWorld();
-            
-            if(imageIndex == 3){
+            imageIndex = (imageIndex + 1);
+            System.out.println(imageIndex);
+            if(imageIndex == 4){
                 world.removeObject(this);
+                imageIndex = 3; //Set it back to 3 so indexOutOfBoundsException doesn't occur
                 world.createSpike();
             }
             setImage(idle[imageIndex]);
-            imageIndex = (imageIndex + 1);
         }
     }
     
