@@ -13,6 +13,7 @@ public class MyWorld extends World
     Label scoreLabel; //Score label object
     Label highScoreLabel; //High score label object
     int level = 1; //Speed at which apple is falling
+    int maxSpikes = 1; //Limit of amount of spike objects on screen
     
     /**
      * Constructor for objects of class MyWorld.
@@ -51,7 +52,8 @@ public class MyWorld extends World
         //Increase level or speed of apple falling every 5 points
         if(score % 5 == 0)
         {
-            level += 1;
+            level++;
+            maxSpikes++;
         }
     }
     
@@ -61,7 +63,8 @@ public class MyWorld extends World
     public void gameOver(){
         Label gameOverLabel = new Label("Game Over", 100);
         addObject(gameOverLabel, 300, 200);
-        removeObjects(getObjects(Apple.class));
+        //Remove all instances of Apple
+        removeObjects(getObjects(Apple.class)); 
         
         //Set highscore if current score is larger than old highscore
         if(score > highScore){
@@ -86,10 +89,14 @@ public class MyWorld extends World
      * Create a spike in a random y-value on the ground
      */
     public void createSpike(){
-        Spike spike = new Spike();
-        
-        int x = Greenfoot.getRandomNumber(600);
-        int y = 310; //Elephant ground y-value
-        addObject(spike, x, y);
+        //Remove all previous instances of spike so it doesn't stack infinitely
+        removeObjects(getObjects(Spike.class)); 
+        //Set the amount of spikes that can appear at once
+        for(int i = 0; i<maxSpikes; i++){
+            Spike spike = new Spike();
+            int x = Greenfoot.getRandomNumber(600);
+            int y = 310; //Elephant ground y-value
+            addObject(spike, x, y);
+        }
     }
 }
