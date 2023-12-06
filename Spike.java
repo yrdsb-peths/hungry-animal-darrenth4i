@@ -34,7 +34,7 @@ public class Spike extends Actor
             animationTimer.mark();
             MyWorld world = (MyWorld) getWorld();
             imageIndex = (imageIndex + 1);
-            System.out.println(imageIndex);
+ 
             if(imageIndex == 4){
                 world.removeObject(this);
                 imageIndex = 3; //Set it back to 3 so indexOutOfBoundsException doesn't occur

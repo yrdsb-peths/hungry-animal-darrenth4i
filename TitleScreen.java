@@ -9,14 +9,27 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class TitleScreen extends World
 {
     Label titleLabel = new Label("Hungry Elephant", 60);
+    int pastHS; //Variable to keep track of a highscore when R is pressed to reset game
     /**
-     * Constructor for objects of class TitleScreen.
+     * Default constructor for objects of class TitleScreen.
      */
     public TitleScreen()
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(600, 400, 1); 
 
+        addObject(titleLabel, getWidth()/2, 70);
+        prepare();
+    }
+    
+    /**
+     * Overloaded constructor for displaying highscore during a new
+     * playthrough of the same session
+     */
+    public TitleScreen(int HS){
+        // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
+        super(600, 400, 1); 
+        pastHS = HS;
         addObject(titleLabel, getWidth()/2, 70);
         prepare();
     }
@@ -28,6 +41,8 @@ public class TitleScreen extends World
         //Start game once player presses space bar
         if(Greenfoot.isKeyDown("space")){
             MyWorld gameWorld = new MyWorld();
+            //Set highscore to the past highscore of the same session, 0 by default
+            gameWorld.setHighScore(pastHS);
             Greenfoot.setWorld(gameWorld);
         }
     }
