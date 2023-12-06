@@ -28,12 +28,12 @@ public class MyWorld extends World
         addObject(elephant, 300, 300);
         
         //Label to show the score
-        scoreLabel = new Label(0, 80);
-        addObject(scoreLabel, 20, 30);
+        scoreLabel = new Label("Score: " + 0, 40);
+        addObject(scoreLabel, 85, 30);
         
         //Label to show the high score of the session
         highScoreLabel = new Label("High score: " + highScore, 40);
-        addObject(highScoreLabel, 500, 20);
+        addObject(highScoreLabel, 480, 30);
         
         //Create falling apple
         createApple();
@@ -67,7 +67,7 @@ public class MyWorld extends World
      */
     public void increaseScore(){
         score++;
-        scoreLabel.setValue(score);
+        scoreLabel.setValue("Score: " + score);
         
         //Increase level or speed of apple falling every 5 points
         if(score % 5 == 0)
@@ -83,8 +83,9 @@ public class MyWorld extends World
     public void gameOver(){
         Label gameOverLabel = new Label("Game Over (R to reset)", 60);
         addObject(gameOverLabel, 300, 200);
-        //Remove all instances of Apple
+        //Remove all instances of Apple and Spike upon death
         removeObjects(getObjects(Apple.class)); 
+        removeObjects(getObjects(Spike.class)); 
         
         //Set highscore if current score is larger than old highscore
         if(score > highScore){
