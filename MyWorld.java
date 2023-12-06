@@ -32,28 +32,33 @@ public class MyWorld extends World
         addObject(scoreLabel, 20, 30);
         
         //Label to show the high score of the session
-        highScoreLabel = new Label("High score: " + 0, 40);
+        highScoreLabel = new Label("High score: " + highScore, 40);
         addObject(highScoreLabel, 500, 20);
         
         //Create falling apple
         createApple();
         
         //Create spike
-        createSpike();
+        createSpike(); 
     }
-    
+   
+    /**
+     * Continually check if user types R to reset
+     */
     public void act(){
         //Reset to title screen if R is pressed
         if(Greenfoot.isKeyDown("r")){
-            TitleScreen title = new TitleScreen();
+            //Keep track of highscore across resets with overloaded constructor
+            TitleScreen title = new TitleScreen(highScore);
             Greenfoot.setWorld(title);
         }
     }
     
     /**
-     * Method to set highScore variable
+     * Method to set highScore variable to save highscore during different playthroughs of a session
      */
     public void setHighScore(int scoreValue){
+        highScore = scoreValue;
         highScoreLabel.setValue("High score: " + scoreValue);
     }
     
@@ -84,6 +89,7 @@ public class MyWorld extends World
         //Set highscore if current score is larger than old highscore
         if(score > highScore){
             highScoreLabel.setValue("High score: " + score);
+            highScore = score; //Update highscore variable
         }
     }    
     
