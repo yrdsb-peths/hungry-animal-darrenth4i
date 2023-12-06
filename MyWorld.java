@@ -61,6 +61,8 @@ public class MyWorld extends World
     public void gameOver(){
         Label gameOverLabel = new Label("Game Over", 100);
         addObject(gameOverLabel, 300, 200);
+        removeObjects(getObjects(Apple.class));
+        
         //Set highscore if current score is larger than old highscore
         if(score > highScore){
             highScoreLabel.setValue("High score: " + score);

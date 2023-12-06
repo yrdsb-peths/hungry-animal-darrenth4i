@@ -123,10 +123,12 @@ public class Elephant extends Actor
     }
     
     /**
-     * Method that occurs when elephant touches a spike
+     * Method that occurs when elephant touches an active spike (final image in spike animation)
      */
     public void hitSpike(){
+        //Create an object for the spike that touches the elephant
         Spike spike = (Spike)getOneIntersectingObject(Spike.class);
+        //Only gameOver if the spike is at its final imageIndex
         if(isTouching(Spike.class) && spike.imageIndex == 3){ 
             removeTouching(Spike.class);
             MyWorld world = (MyWorld) getWorld();
