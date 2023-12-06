@@ -43,10 +43,18 @@ public class MyWorld extends World
     }
     
     public void act(){
+        //Reset to title screen if R is pressed
         if(Greenfoot.isKeyDown("r")){
             TitleScreen title = new TitleScreen();
             Greenfoot.setWorld(title);
         }
+    }
+    
+    /**
+     * Method to set highScore variable
+     */
+    public void setHighScore(int scoreValue){
+        highScoreLabel.setValue("High score: " + scoreValue);
     }
     
     /**
