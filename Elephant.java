@@ -74,11 +74,11 @@ public class Elephant extends Actor
     {
         //Move left or right based on key a or d
         if(Greenfoot.isKeyDown("a")){
-            move(-4);
+            move(-5);
             facing = "left";
         }
         if(Greenfoot.isKeyDown("d")){
-            move(4);
+            move(5);
             facing = "right";
         }
         
@@ -126,7 +126,8 @@ public class Elephant extends Actor
      * Method that occurs when elephant touches a spike
      */
     public void hitSpike(){
-        if(isTouching(Spike.class)){ //use getOneIntersectingObject
+        Spike spike = (Spike)getOneIntersectingObject(Spike.class);
+        if(isTouching(Spike.class) && spike.imageIndex == 3){ 
             removeTouching(Spike.class);
             MyWorld world = (MyWorld) getWorld();
             //Run gameover if elephant touches spike

@@ -87,7 +87,7 @@ public class MyWorld extends World
         Spike spike = new Spike();
         
         int x = Greenfoot.getRandomNumber(600);
-        int y = 320; //Elephant ground y-value
+        int y = 310; //Elephant ground y-value
         addObject(spike, x, y);
     }
 }
