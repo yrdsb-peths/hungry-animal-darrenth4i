@@ -1,14 +1,16 @@
 # Hungry Animal Tutorial
-This is the README.md file.
-Change this file to show your intended audience what you want them to see.
+You are a hungry elephant that needs to keep eating apples to stay alive. Collect the falling apples to gain score and try to stay alive for as long as possible. Hitting a spike trap or failing to eat an apple will result in a game over.
 
-You can use **Markdown** syntax to format this file to do things like **bold** or *italicize* text.
-[Markdown basics](https://www.markdownguide.org/getting-started/)
+**New Features Added**
 
-This particular repository is the starting template for the Hungry Elephant tutorial.
+1. Going past the world boundaries will automatically teleport you to the other side
+     e.g. Holding left will teleport you to the right side
 
-[Part 1: Greenfoot Basics](https://youtu.be/zxaa3X0MihI)
+2. Spikes will appear with 1.5 seconds of warning before collision is enabled. They will last for 2.5 seconds before disappearing and touching them will result in a game over. Every 5 points, an additional spike trap will appear.
 
-[Part 2: Game Enhancements](https://youtu.be/TwID9i0Ey6o)
+3. A high score value is saved as long as long as it is the same play session.
 
-[Part 3: Final Touches](https://youtu.be/GT-eFwa4Abc)
+4. Pressing "w" will allow the elephant to jump
+
+5. Pressing "r" will reset the game but keep the high score value
+
