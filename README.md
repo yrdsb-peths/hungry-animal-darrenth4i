@@ -8,7 +8,7 @@ You are a hungry elephant that needs to keep eating apples to stay alive. Collec
 
 2. Spikes will appear with 1.5 seconds of warning before collision is enabled. They will last for 2.5 seconds before disappearing and touching them will result in a game over. Every 5 points, an additional spike trap will appear.
 
-3. A high score value is saved as long as long as it is the same play session.
+3. A high score value is saved as long as it is the same play session.
 
 4. Pressing "w" will allow the elephant to jump
 
