@@ -1,10 +1,11 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Apple here.
+ * The apple that the elephant will eat. This class is responsible for updating it's position
+ * while falling and changing the speed at which the apple falls. 
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Darren  T.
+ * @version 12/06/2023
  */
 public class Apple extends Actor
 {
