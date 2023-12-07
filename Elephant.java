@@ -5,7 +5,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * or else he will die.
  * 
  * @author Darren
- * @version November 2023
+ * @version 12/06/2023
  */
 public class Elephant extends Actor
 {

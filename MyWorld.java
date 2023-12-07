@@ -4,7 +4,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * Main world where the game is being played
  * 
  * @author Darren
- * @version 11/30/2023
+ * @version 12/06/2023
  */
 public class MyWorld extends World
 { 
@@ -69,7 +69,7 @@ public class MyWorld extends World
         score++;
         scoreLabel.setValue("Score: " + score);
         
-        //Increase level or speed of apple falling every 5 points
+        //Increase amount of spikes or speed of apple falling every 5 points
         if(score % 5 == 0)
         {
             level++;
