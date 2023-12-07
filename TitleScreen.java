@@ -61,6 +61,8 @@ public class TitleScreen extends World
         elephant.setLocation(528,67);
         Label label = new Label("Press 'a' and 'd' to move!", 50);
         addObject(label,286,220);
+        Label label3 = new Label("Press 'w' to jump!", 50);
+        addObject(label3,300,270);
         Label label2 = new Label("Press spacebar to start the game!", 30);
         addObject(label2,286,354);
         label.setLocation(300,330);
