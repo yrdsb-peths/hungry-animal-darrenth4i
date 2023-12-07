@@ -24,7 +24,7 @@ public class MyWorld extends World
         super(600, 400, 1, false);
         
         //Create elephant
-        Elephant elephant = new Elephant();
+        Elephant elephant = new Elephant(true);
         addObject(elephant, 300, 300);
         
         //Label to show the score

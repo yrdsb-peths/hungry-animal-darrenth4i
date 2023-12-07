@@ -21,6 +21,9 @@ public class Elephant extends Actor
     //Cooldown timer for jumping so elephant can't spam jump
     SimpleTimer jumpTimer = new SimpleTimer(); //TODO DOESNT WORK
     
+    boolean real;
+    double yVel = 0;
+    boolean onGround = true;
     int cycles; //Variable to keep track of how far away vertically from (x, 300) the elephant is
     boolean letGo; //Variable to track when player lets go of "w"/jump
     boolean jumpCD; //Variable that allows player to jump after a set cooldown is over
@@ -28,7 +31,8 @@ public class Elephant extends Actor
     /**
      * Elephant constructor
      */
-    public Elephant(){
+    public Elephant(boolean real){
+        this.real = real;
         //Construct an array of 8 pictures of elephant
         for(int i = 0; i < idleRight.length; i++){
             idleRight[i] = new GreenfootImage("images/elephant_idle/idle" + i  + ".png");
@@ -84,6 +88,14 @@ public class Elephant extends Actor
         
         //Elephant jumping method
         jump();
+        if (this.real) {
+            yVel += 0.4;
+            setLocation(getX(), (int) ((double) getY() + yVel));
+            if (getY() > 300) {
+                setLocation(getX(), 300);
+                this.onGround = true;
+            }
+        }
 
         //If the elephant goes past the world boundaries it will be
         //teleported to the other side of the world 
@@ -141,37 +153,41 @@ public class Elephant extends Actor
      * Method that allows the elephant to single jump
      */
     public void jump(){
+        if(Greenfoot.isKeyDown("w") && this.onGround) {
+            this.yVel = -9.5;
+            this.onGround = false;
+        }
         //Lets user jump 
-        if(Greenfoot.isKeyDown("w") && !letGo && !jumpCD){
-            setLocation(getX(), getY() - 10);
-            cycles += 10;
-            //Condition is checking if user has hit the max jump height
-            if(cycles >= 120){ 
-                letGo = true;
-            }
+        // if(Greenfoot.isKeyDown("w") && !letGo && !jumpCD){
+            // setLocation(getX(), getY() - 10);
+            // cycles += 10;
+            // //Condition is checking if user has hit the max jump height
+            // if(cycles >= 120){ 
+                // letGo = true;
+            // }
 
-        }
+        // }
         
-        //Condition checks if user is has let go of jump midair
-        if(!Greenfoot.isKeyDown("w") && cycles > 0){
-            letGo = true;
-        }
+        // //Condition checks if user is has let go of jump midair
+        // if(!Greenfoot.isKeyDown("w") && cycles > 0){
+            // letGo = true;
+        // }
         
-        //Condition to make player fall back down to original height
-        if(getY() < 300 && cycles != 0 && (letGo || !Greenfoot.isKeyDown("w"))){
-            setLocation(getX(), getY() + 5);
-            cycles -= 5;
-            //User can jump again if they are back to original y-value
-            if(cycles <= 0){
-                letGo = false;
-                jumpCD = true; //begin jump cooldown
-                jumpTimer.mark();
-            }
-        }
+        // //Condition to make player fall back down to original height
+        // if(getY() < 300 && cycles != 0 && (letGo || !Greenfoot.isKeyDown("w"))){
+            // setLocation(getX(), getY() + 5);
+            // cycles -= 5;
+            // //User can jump again if they are back to original y-value
+            // if(cycles <= 0){
+                // letGo = false;
+                // jumpCD = true; //begin jump cooldown
+                // jumpTimer.mark();
+            // }
+        // }
         
-        //Allow user to jump again after a cooldown of 200 ms
-        if(jumpTimer.millisElapsed() > 200){
-            jumpCD = false;
-        }
+        // //Allow user to jump again after a cooldown of 200 ms
+        // if(jumpTimer.millisElapsed() > 200){
+            // jumpCD = false;
+        // }
     }
 }
