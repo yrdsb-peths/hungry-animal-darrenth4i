@@ -13,21 +13,21 @@ public class Elephant extends Actor
     //Array to "animate" elephant's idle animation
     GreenfootImage[] idleRight = new GreenfootImage[8];
     GreenfootImage[] idleLeft = new GreenfootImage[8];
-    
+
     //Direction the elephant is facing
     String facing = "right";
     SimpleTimer animationTimer = new SimpleTimer();
-    
+
     //Cooldown timer for jumping so elephant can't spam jump
     SimpleTimer jumpTimer = new SimpleTimer(); //TODO DOESNT WORK
-    
+
     boolean real;
     double yVel = 0;
     boolean onGround = true;
     int cycles; //Variable to keep track of how far away vertically from (x, 300) the elephant is
     boolean letGo; //Variable to track when player lets go of "w"/jump
     boolean jumpCD; //Variable that allows player to jump after a set cooldown is over
-    
+
     /**
      * Elephant constructor
      */
@@ -37,19 +37,19 @@ public class Elephant extends Actor
         for(int i = 0; i < idleRight.length; i++){
             idleRight[i] = new GreenfootImage("images/elephant_idle/idle" + i  + ".png");
         }
-        
+
         //Same as above but for when elephant faces left
         for(int i = 0; i < idleLeft.length; i++){
             idleLeft[i] = new GreenfootImage("images/elephant_idle/idle" + i  + ".png");
             idleLeft[i].mirrorHorizontally();
         }
-        
+
         animationTimer.mark();
-        
+
         //initial elephant image
         setImage(idleRight[0]);
     }
-    
+
     /**
      * Method to animate the elephant using arrays
      */
@@ -59,7 +59,7 @@ public class Elephant extends Actor
             return;
         }
         animationTimer.mark();
-        
+
         if(facing.equals("right")){
             setImage(idleRight[imageIndex]);
             imageIndex = (imageIndex + 1) % idleRight.length;
@@ -69,7 +69,7 @@ public class Elephant extends Actor
             imageIndex = (imageIndex + 1) % idleLeft.length;
         }
     }
-    
+
     /**
      * Act - do whatever the Elephant wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
@@ -77,15 +77,19 @@ public class Elephant extends Actor
     public void act() 
     {
         //Move left or right based on key a or d
-        if(Greenfoot.isKeyDown("a")){
-            move(-5);
+        int moveVelocity = 4;
+        if(Greenfoot.isKeyDown("shift")){
+            moveVelocity *= 2;
+        }
+        if(Greenfoot.isKeyDown("a") || Greenfoot.isKeyDown("left")){
+            move(-moveVelocity);
             facing = "left";
         }
-        if(Greenfoot.isKeyDown("d")){
-            move(5);
+        if(Greenfoot.isKeyDown("d") || Greenfoot.isKeyDown("right")){
+            move(moveVelocity);
             facing = "right";
         }
-        
+
         //Elephant jumping method
         jump();
         if (this.real) {
@@ -106,22 +110,22 @@ public class Elephant extends Actor
         else if(getX() > 600){
             setLocation(-25, getY());
         }
-        
+
         //Apple disappears once elephant touches it
         eat();
-        
+
         //Game over if elephant touches spike
         hitSpike();
-        
+
         //Animate the elephant
         animateElephant();
     }    
-    
+
     /**
      * Method that occurs when elephant touches an apple
      */
     public void eat(){
-        
+
         if(isTouching(Apple.class)){
             removeTouching(Apple.class);
             MyWorld world = (MyWorld) getWorld();
@@ -133,7 +137,7 @@ public class Elephant extends Actor
             elephantSound.play();
         }
     }
-    
+
     /**
      * Method that occurs when elephant touches an active spike (final image in spike animation)
      */
@@ -148,46 +152,46 @@ public class Elephant extends Actor
             world.gameOver();
         }
     }
-    
+
     /**
      * Method that allows the elephant to single jump
      */
     public void jump(){
-        if(Greenfoot.isKeyDown("w") && this.onGround) {
+        if((Greenfoot.isKeyDown("w") || Greenfoot.isKeyDown("up")) && this.onGround) {
             this.yVel = -9.5;
             this.onGround = false;
         }
         //Lets user jump 
         // if(Greenfoot.isKeyDown("w") && !letGo && !jumpCD){
-            // setLocation(getX(), getY() - 10);
-            // cycles += 10;
-            // //Condition is checking if user has hit the max jump height
-            // if(cycles >= 120){ 
-                // letGo = true;
-            // }
+        // setLocation(getX(), getY() - 10);
+        // cycles += 10;
+        // //Condition is checking if user has hit the max jump height
+        // if(cycles >= 120){ 
+        // letGo = true;
+        // }
 
         // }
-        
+
         // //Condition checks if user is has let go of jump midair
         // if(!Greenfoot.isKeyDown("w") && cycles > 0){
-            // letGo = true;
+        // letGo = true;
         // }
-        
+
         // //Condition to make player fall back down to original height
         // if(getY() < 300 && cycles != 0 && (letGo || !Greenfoot.isKeyDown("w"))){
-            // setLocation(getX(), getY() + 5);
-            // cycles -= 5;
-            // //User can jump again if they are back to original y-value
-            // if(cycles <= 0){
-                // letGo = false;
-                // jumpCD = true; //begin jump cooldown
-                // jumpTimer.mark();
-            // }
+        // setLocation(getX(), getY() + 5);
+        // cycles -= 5;
+        // //User can jump again if they are back to original y-value
+        // if(cycles <= 0){
+        // letGo = false;
+        // jumpCD = true; //begin jump cooldown
+        // jumpTimer.mark();
         // }
-        
+        // }
+
         // //Allow user to jump again after a cooldown of 200 ms
         // if(jumpTimer.millisElapsed() > 200){
-            // jumpCD = false;
+        // jumpCD = false;
         // }
     }
 }
